@@ -1,66 +1,40 @@
-# Play-dl
+# play-dl (Forked Version)
 
-A **light-weight** YouTube, SoundCloud, Spotify and Deezer streaming and searching library.
+このリポジトリは、以下のフォークを基にしたものです：
 
--   Search by video, playlist/album, channel/artist
--   Stream audio from YouTube and SoundCloud
+- 元リポジトリ: [play-dl/play-dl](https://github.com/play-dl/play-dl)
+- フォーク元: [YuzuZensai/play-dl-test](https://github.com/YuzuZensai/play-dl-test)
 
-# Why play-dl ?
+## 背景
 
-[ytdl-core](https://github.com/fent/node-ytdl-core) has some issues with miniget and also stream abort issues. On the other hand, [youtube-dl](https://github.com/ytdl-org/youtube-dl) is a perfect alternative but it takes time to launch. Hence, play-dl is created to avoid these issues along with providing comparatively faster performance than others.
+`play-dl`公式では、YouTube側の仕様変更に迅速に対応できない状況が発生しており、有志の方が修正版をフォークとして提供しています。このリポジトリはそのフォークを元に作成されたもので、**npmから簡単にインストールできるようにする**ために公開しています。
 
-[![Discord](https://img.shields.io/discord/888998674716315679?color=00aa00&label=%20Discord&logo=Discord)](https://discord.gg/8H3xWcv3D7)
-[![NPM](https://img.shields.io/npm/v/play-dl.svg?color=00aa00&logo=npm)](https://www.npmjs.com/package/play-dl)
+## インストール方法
 
-## Support
-
-You can contact us for support on our [chat server](https://discord.gg/8H3xWcv3D7).
-
-### Installation
-
-**Node.js 16.0.0 or newer is required.**
+以下のコマンドを使用して、このリポジトリのバージョンを直接インストールできます：
 
 ```bash
-npm install play-dl@latest
-pnpm add play-dl@latest
-yarn add play-dl@latest
+npm install git+https://github.com/yuyutti/play-dl.git
 ```
 
-### Importing
+## 特徴
 
-**TypeScript:**
-```ts
-import play from 'play-dl'; // Everything
+- 元の `play-dl` と同様の機能を提供します。
+- **インポート文を変更する必要がありません**。
+  
+  ```javascript
+  const play = require('play-dl');
+  ```
+  または
+  ```javascript
+  import play from 'play-dl';
+  ```
+  と記述すれば動作します。
 
-import { video_basic_info, stream } from 'play-dl'; // Individual functions
-```
+## 注意事項
 
-**CommonJS modules:**
-```js
-const play = require('play-dl'); // Everything
+このリポジトリは修正版をnpmで入れやすくするためのフォーク版であり、公式リポジトリとは異なることにご注意ください。また、このリポジトリが今後のYouTube仕様変更に対応できる保証はありません。
 
-// Individual functions by using destructuring
-const { video_basic_info, stream } = require('play-dl');
-```
+## ライセンス
 
-**ES6 modules:**
-```ts
-import play from 'play-dl'; // Everything
-
-import { video_basic_info, stream } from 'play-dl'; // Individual functions
-```
-
-## **Compatibility issues** - discord-player
-    
-Because discord-player doesn't work with raw opus packets you need to enable the compatibility mode in `play-dl`, if you want to use both frameworks together.
-
-- To fix the playback of YouTube videos with `discord-player`, you can disable some of play-dl's optimisations and fixes by setting the `discordPlayerCompatibility` option for `stream` and `stream_from_info` to true
-
-- The `discordPlayerCompatiblity` option might break the playback of long YouTube videos.
-
-- Even with the `discordPlayerCompatibility` option set you will not be able to use the seek option for `stream` and `stream_from_info`.
-    
-
-### [Documentation](https://play-dl.github.io/modules.html)
-### [Examples](./examples)
-### [Instructions](./instructions)
+元の `play-dl` のライセンスに準じます。
