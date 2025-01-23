@@ -492,6 +492,7 @@ export async function decipher_info<T extends InfoData | StreamInfoData>(
     } else if (data.format.length > 0 && (data.format[0].signatureCipher || data.format[0].cipher)) {
         if (audio_only) data.format = parseAudioFormats(data.format);
         data.format = await format_decipher(data.format, data.html5player);
+        console.log(data.format);
         return data;
     } else return data;
 }
