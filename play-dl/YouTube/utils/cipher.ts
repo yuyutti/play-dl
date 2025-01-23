@@ -155,7 +155,6 @@ function download_url(format: formatOptions, sig: string) {
  */
 export async function format_decipher(formats: formatOptions[], html5player: string): Promise<formatOptions[]> {
     const body = await request(html5player);
-    console.log(body);
     const tokens = js_tokens(body);
     console.log(tokens);
     formats.forEach((format) => {
