@@ -199,7 +199,7 @@ function https_getter(req_url: string, options: RequestOpts = {}): Promise<Incom
         };
 
         const req = httpsRequest(req_options, (res) => {
-            console.log(req_url, req_options, res.statusCode);
+            // console.log(req_url, req_options, res.statusCode);
             resolve(res);
         });
         req.on('error', (err) => {

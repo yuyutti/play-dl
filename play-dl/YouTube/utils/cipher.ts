@@ -154,9 +154,8 @@ function download_url(format: formatOptions, sig: string) {
  * @returns array of format.
  */
 export async function format_decipher(formats: formatOptions[], html5player: string): Promise<formatOptions[]> {
-    const body = await request(html5player);
+    const body = await request(html5player); // 取得確認済み
     const tokens = js_tokens(body);
-    console.log(tokens);
     formats.forEach((format) => {
         const cipher = format.signatureCipher || format.cipher;
         if (cipher) {
