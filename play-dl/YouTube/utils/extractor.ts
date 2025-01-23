@@ -483,7 +483,6 @@ export async function decipher_info<T extends InfoData | StreamInfoData>(
     data: T,
     audio_only: boolean = false
 ): Promise<T> {
-    console.log("セキュリティ関連が呼び出されました");
     if (
         data.LiveStreamData.isLive === true &&
         data.LiveStreamData.dashManifestUrl !== null &&

@@ -84,6 +84,7 @@ function js_tokens(body: string) {
                 break;
         }
     }
+    console.log(tokens);
     return tokens;
 }
 /**
