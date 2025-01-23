@@ -198,7 +198,7 @@ function https_getter(req_url: string, options: RequestOpts = {}): Promise<Incom
         };
 
         const req = httpsRequest(req_options, (res) => {
-            console.log(`DEBUG: Status Code: ${res.statusCode}`); // STATUSコードをログに出力
+            console.log(req_url, "\n", res.statusCode);
             resolve(res);
         });
         req.on('error', (err) => {
