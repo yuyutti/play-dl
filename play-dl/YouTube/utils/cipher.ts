@@ -84,7 +84,6 @@ function js_tokens(body: string) {
                 break;
         }
     }
-    console.log(tokens);
     return tokens;
 }
 /**
@@ -156,7 +155,9 @@ function download_url(format: formatOptions, sig: string) {
  */
 export async function format_decipher(formats: formatOptions[], html5player: string): Promise<formatOptions[]> {
     const body = await request(html5player);
+    console.log(body);
     const tokens = js_tokens(body);
+    console.log(tokens);
     formats.forEach((format) => {
         const cipher = format.signatureCipher || format.cipher;
         if (cipher) {
@@ -172,5 +173,6 @@ export async function format_decipher(formats: formatOptions[], html5player: str
             delete format.sp;
         }
     });
+    console.log(formats);
     return formats;
 }
