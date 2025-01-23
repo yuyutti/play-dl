@@ -27,7 +27,6 @@ export function request_stream(req_url: string, options: RequestOpts = { method:
             return;
         }
         if (Number(res.statusCode) >= 300 && Number(res.statusCode) < 400) {
-            console.log("Redirecting to", res.headers.location);
             res = await request_stream(res.headers.location as string, options);
         }
         resolve(res);
@@ -200,7 +199,7 @@ function https_getter(req_url: string, options: RequestOpts = {}): Promise<Incom
         };
 
         const req = httpsRequest(req_options, (res) => {
-            // console.log(req_url, req_options, res.statusCode);
+            console.log(req_url, req_options, res.statusCode);
             resolve(res);
         });
         req.on('error', (err) => {
