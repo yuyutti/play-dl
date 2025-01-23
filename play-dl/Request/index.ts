@@ -4,6 +4,7 @@ import { URL } from 'node:url';
 import { BrotliDecompress, Deflate, Gunzip, createGunzip, createBrotliDecompress, createDeflate } from 'node:zlib';
 import { cookieHeaders, getCookies } from '../YouTube/utils/cookie';
 import { getRandomUserAgent } from './useragent';
+import { url } from 'node:inspector';
 
 interface RequestOpts extends RequestOptions {
     body?: string;
@@ -198,7 +199,7 @@ function https_getter(req_url: string, options: RequestOpts = {}): Promise<Incom
         };
 
         const req = httpsRequest(req_options, (res) => {
-            console.log(req_url, "\n", res.statusCode);
+            console.log(req_url, req_options, res.statusCode);
             resolve(res);
         });
         req.on('error', (err) => {
