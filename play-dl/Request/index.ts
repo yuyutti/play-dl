@@ -197,12 +197,6 @@ function https_getter(req_url: string, options: RequestOpts = {}): Promise<Incom
             method: options.method
         };
 
-        // console.log(
-        //     req_url,
-        //     req_options,
-        //     options?.body,
-        // )
-
         const req = httpsRequest(req_options, resolve);
         req.on('error', (err) => {
             reject(err);
