@@ -37,6 +37,7 @@ export function parseAudioFormats(formats: any[]) {
             result.push(format);
         }
     });
+    console.log(result);
     return result;
 }
 /**
