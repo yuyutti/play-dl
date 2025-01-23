@@ -20,6 +20,7 @@ interface RequestOpts extends RequestOptions {
  * @returns IncomingMessage from the request
  */
 export function request_stream(req_url: string, options: RequestOpts = { method: 'GET' }): Promise<IncomingMessage> {
+    console.log("Requesting stream", req_url);
     return new Promise(async (resolve, reject) => {
         let res = await https_getter(req_url, options).catch((err: Error) => err);
         if (res instanceof Error) {
