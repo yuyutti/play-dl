@@ -694,39 +694,12 @@ async function getIosFormats(videoId: string, cookieJar: { [key: string]: string
         method: 'POST',
         body: JSON.stringify({
             context: {
-                // client: {
-                //     clientName: 'IOS',
-                //     clientVersion: '19.09.3',
-                //     deviceModel: 'iPhone16,1',
-                //     userAgent: 'com.google.ios.youtube/19.09.3 (iPhone; CPU iPhone OS 17_5 like Mac OS X)',
-                //     hl: 'en',
-                //     timeZone: 'UTC',
-                //     utcOffsetMinutes: 0
-                // }
                 client: {
-                    hl: "ja",
-                    gl: "JP",
-                    deviceMake: "",
-                    deviceModel: "",
-                    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36,gzip(gfe)",
-                    clientName: "WEB",
-                    clientVersion: "2.20250122.01.00",
-                    osName: "Windows",
-                    osVersion: "10.0",
-                    platform: "DESKTOP",
-                    clientFormFactor: "UNKNOWN_FORM_FACTOR",
-                    userInterfaceTheme: "USER_INTERFACE_THEME_DARK",
-                    timeZone: "Asia/Tokyo",
-                    browserName: "Chrome",
-                    browserVersion: "131.0.0.0",
-                    acceptHeader: "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-                    screenWidthPoints: 1279,
-                    screenHeightPoints: 993,
-                    screenPixelDensity: 1,
-                    screenDensityFloat: 1,
-                    utcOffsetMinutes: 540,
-                    memoryTotalKbytes: "8000000",
-                    clientScreen: "WATCH",
+                    clientName: "WEB_EMBEDDED_PLAYER",
+                    clientVersion: "1.20240723.01.00",
+                    hl: 'en',
+                    timeZone: 'UTC',
+                    utcOffsetMinutes: 0
                 }
             },
             videoId: videoId,
