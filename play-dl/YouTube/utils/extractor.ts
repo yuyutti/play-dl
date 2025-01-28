@@ -538,6 +538,9 @@ export async function playlist_info(url: string, options: PlaylistOptions = {}):
             .split(';</script>')[0]
             .split(/;\s*(var|const|let)\s/)[0]
     );
+    // fsでresponseを保存する
+    const fs = require('fs');
+    fs.writeFileSync('response.json', JSON.stringify(response, null, 2));
     if (response.alerts) {
         if (response.alerts[0].alertWithButtonRenderer?.type === 'INFO') {
             if (!options.incomplete)
