@@ -222,15 +222,34 @@ export async function sp_search(
  * ```
  * @returns boolean
  */
+// export async function refreshToken(): Promise<boolean> {
+//     const response = await request(`https://accounts.spotify.com/api/token`, {
+//         headers: {
+//             'Authorization': `Basic ${Buffer.from(`${spotifyData.client_id}:${spotifyData.client_secret}`).toString(
+//                 'base64'
+//             )}`,
+//             'Content-Type': 'application/x-www-form-urlencoded'
+//         },
+//         body: `grant_type=refresh_token&refresh_token=${spotifyData.refresh_token}`,
+//         method: 'POST'
+//     }).catch((err: Error) => {
+//         return err;
+//     });
+//     if (response instanceof Error) return false;
+//     const resp_json = JSON.parse(response);
+//     spotifyData.access_token = resp_json.access_token;
+//     spotifyData.expires_in = Number(resp_json.expires_in);
+//     spotifyData.expiry = Date.now() + (resp_json.expires_in - 1) * 1000;
+//     spotifyData.token_type = resp_json.token_type;
+//     if (spotifyData.file) writeFileSync('.data/spotify.data', JSON.stringify(spotifyData, undefined, 4));
+//     return true;
+// }
 export async function refreshToken(): Promise<boolean> {
     const response = await request(`https://accounts.spotify.com/api/token`, {
         headers: {
-            'Authorization': `Basic ${Buffer.from(`${spotifyData.client_id}:${spotifyData.client_secret}`).toString(
-                'base64'
-            )}`,
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: `grant_type=refresh_token&refresh_token=${spotifyData.refresh_token}`,
+        body: `grant_type=client_credentials&client_id=${spotifyData.client_id}&client_secret=${spotifyData.client_secret}`,
         method: 'POST'
     }).catch((err: Error) => {
         return err;
@@ -238,9 +257,9 @@ export async function refreshToken(): Promise<boolean> {
     if (response instanceof Error) return false;
     const resp_json = JSON.parse(response);
     spotifyData.access_token = resp_json.access_token;
+    spotifyData.token_type = resp_json.token_type;
     spotifyData.expires_in = Number(resp_json.expires_in);
     spotifyData.expiry = Date.now() + (resp_json.expires_in - 1) * 1000;
-    spotifyData.token_type = resp_json.token_type;
     if (spotifyData.file) writeFileSync('.data/spotify.data', JSON.stringify(spotifyData, undefined, 4));
     return true;
 }
